@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cristhian Rodriguez - Portfolio</title>
+  <style>
+    /* Estilos base y layout */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url('img/pawel-czerwinski-O_lLr6e8NtQ-unsplash.jpg'); /* Fondo para todo el portafolio */
+      background-size: cover; /* Asegura que la imagen cubra toda el área */
+      background-position: center; /* Centra la imagen */
+      background-repeat: no-repeat; /* Evita que la imagen se repita */
+      color: #e0e0e0; /* Ajusta el color del texto para mejor visibilidad */
+      line-height: 1.6;
+    }
+    header {
+      background: #1f1f1f;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+      padding: 1rem 2rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #e0e0e0;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #00bcd4;
+    }
+    .language-toggle {
+      background: #00bcd4;
+      color: #000;
+      padding: 0.3rem 0.7rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    main {
+      padding-top: 120px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-image: url('img/pawel-czerwinski-O_lLr6e8NtQ-unsplash.jpg'); /* Fondo para la sección hero */
+      background-size: cover; /* Asegura que la imagen cubra toda el área */
+      background-position: center; /* Centra la imagen */
+      background-repeat: no-repeat; /* Evita que la imagen se repita */
+      color: white; /* Cambia el color del texto si es necesario */
+      padding: 2rem; /* Ajusta el espacio interno */
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeIn 1s ease-in;
+    }
+    .hero img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #00bcd4;
+      margin-bottom: 1rem;
+    }
+    .hero .english,
+    .hero .swedish {
+      font-size: 1.5rem; /* Ajusta el tamaño de la fuente */
+      font-weight: bold; /* Opcional: hace que el texto sea más destacado */
+    }
+
+    /* Encabezados */
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      border-left: 4px solid #00bcd4;
+      padding-left: 0.5rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    /* Secciones generales */
+    section {
+      margin-bottom: 2rem;
+    }
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+    ul li::before {
+      content: "• ";
+      color: #00bcd4;
+      font-weight: bold;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #1f1f1f;
+      margin-top: 3rem;
+      color: #aaa;
+    }
+
+    /* Botón descarga CV */
+    .cv-download {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: #00bcd4;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .cv-download:hover {
+      background: #0097a7;
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 600px) {
+      .hero img {
+        width: 140px;
+        height: 140px;
+      }
+    }
+
+    /* Contacto */
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+    }
+    .contact-info a {
+      color: #00bcd4;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .contact-info a:hover {
+      color: #ffffff;
+    }
+    .contact-info i {
+      font-size: 2.5rem; /* Aumenta el tamaño de los íconos */
+      color: #00bcd4; /* Mantén el color actual */
+      transition: transform 0.3s ease; /* Agrega una transición para un efecto suave */
+    }
+
+    .contact-info i:hover {
+      transform: scale(1.2); /* Aumenta ligeramente el tamaño al pasar el cursor */
+    }
+
+    /* Skills con íconos */
+    .skills-icons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: nowrap; /* Asegura que los íconos estén en una sola fila */
+      justify-content: center; /* Centra los íconos horizontalmente */
+    }
+    .skills-icons div {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .skills-icons i {
+      font-size: 3rem; /* Aumenta el tamaño de los íconos */
+      color: #00bcd4;
+      /* Elimina la animación */
+    }
+
+    /* Projects Grid */
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: #1f1f1f;
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid #333;
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: #00bcd4;
+    }
+    .project-card h3 {
+      margin-bottom: 0.5rem;
+      color: #00bcd4;
+    }
+    .project-card p {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    /* Ocultar texto sueco por defecto */
+    .swedish {
+      display: none;
+    }
+    .english .swedish {
+      display: block;
+    }
+    .english .english {
+      display: none;
+    }
+  </style>
+  <script>
+    function toggleLanguage() {
+      const body = document.body;
+      const button = document.querySelector('.language-toggle');
+      body.classList.toggle('english');
+      if (body.classList.contains('english')) {
+        button.textContent = 'SE'; // Cambia el texto del botón a "SE" cuando está en inglés
+      } else {
+        button.textContent = 'EN'; // Cambia el texto del botón a "EN" cuando está en sueco
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div><strong>Cristhian Rodriguez</strong></div>
+      <div>
+        
+        <button class="language-toggle" onclick="toggleLanguage()">SE</button>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <img src="img/ChatGPT Image 19 apr. 2025 16_51_08.png" alt="Cristhian Rodriguez">
+      <h1>Cristhian Rodriguez</h1>
+      <p class="english">Seeking LIA /Internship From November </p>
+      <p class="swedish">Söker LIA/Praktik Från November </p>
+      <a class="cv-download" href="Cristhian Rodriguez (8).pdf" download>Download CV</a>
+    </section>
+
+    <section class="contact-info" id="contact">
+      <a href="https://mail.google.com/mail/?view=cm&to=manuel.cristhian97@gmail.com" target="_blank">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/cristhian-rodriguez-rodrgo-280176252/" target="_blank">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/cristhiano1" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+    </section>
+
+    <section id="about">
+      <h2 class="english">About Me</h2>
+      <h2 class="swedish">Om mig</h2>
+      <p class="english">
+        I am a passionate person when it comes to technology, with a curiosity that never fades. I love exploring new tools, programming languages, and solutions that transform ideas into digital realities. Every step in the learning process inspires me – from solving complex problems to finding more efficient ways to work.
+        <br><br>
+        Outside the world of technology, I find balance and creativity in my other interests. Playing the guitar is my musical sanctuary where I can express myself in a unique and genuine way. Boxing not only helps me stay fit but also teaches me discipline, focus, and perseverance – qualities I bring into both my personal and professional life.
+        <br><br>
+        I am constantly seeking new challenges that help me grow, both personally and professionally. I thrive in collaboration, enjoy sharing my knowledge, and contribute with enthusiasm and dedication to every project I am part of.
+      </p>
+      <p class="swedish">
+        Jag är en passionerad person när det gäller teknik, med en nyfikenhet som aldrig slocknar. Jag älskar att utforska nya verktyg, programmeringsspråk och lösningar som förvandlar idéer till digitala verkligheter. Varje steg i lärandeprocessen inspirerar mig – från att lösa komplexa problem till att hitta mer effektiva sätt att arbeta.
+        <br><br>
+        Utanför teknikens värld hittar jag balans och kreativitet i mina andra intressen. Att spela gitarr är min musikaliska fristad där jag kan uttrycka mig på ett unikt och äkta sätt. Boxning hjälper mig inte bara att hålla mig i form, utan lär mig även disciplin, fokus och uthållighet – egenskaper jag tar med mig in i både mitt personliga och professionella liv.
+        <br><br>
+        Jag söker ständigt nya utmaningar som hjälper mig att växa, både som person och yrkesmässigt. Jag trivs i samarbete, delar gärna med mig av mina kunskaper och bidrar med entusiasm och engagemang i varje projekt jag är en del av.
+      </p>
+   
+
+    <section id="education">
+      <h2 class="english">Current Education</h2>
+      <h2 class="swedish">Nuvarande Utbildning</h2>
+      <p class="english">
+        I am currently in the midst of an intensive and exciting journey as a student in Azure Cloud Development, where I am not only learning the theory behind cloud technology – I am applying it in practice. Through real-world projects, I gain hands-on experience with tools like Azure App Service, Application Insights, Key Vault, Azure Storage Account, CI/CD pipelines via Azure DevOps, and much more.
+        <br><br>
+        Building and securing applications in the cloud is not just something I study – it is something I do. I have learned to automate deployments, monitor performance, securely manage sensitive keys, and use scalability to optimize resources. I work with real-world scenarios where security, performance, and structure are key, and every task helps me think like a future developer in the industry.
+        <br><br>
+        What I love most about this field is that it is constantly evolving. Azure offers not just technology – it offers opportunities. And I am here to seize them. 🚀
+        <br><br>
+        With a mix of technical knowledge, curiosity, and practical learning, I am well on my way to becoming a cloud specialist who not only builds solutions – but builds them right.
+      </p>
+      <p class="swedish">
+        Jag är just nu mitt uppe i en intensiv och spännande resa som student inom Azure Cloudutveckling, där jag inte bara lär mig teorin bakom molnteknologi – jag tillämpar den i praktiken. Genom verklighetsbaserade projekt får jag hands-on-erfarenhet med verktyg som Azure App Service, Application Insights, Key Vault, Azure Storage Account, CI/CD-pipelines via Azure DevOps och mycket mer.
+        <br><br>
+        Att bygga och säkra applikationer i molnet är inte bara något jag studerar – det är något jag gör. Jag har lärt mig att automatisera deployment, övervaka prestanda, hantera känsliga nycklar på ett säkert sätt, och använda skalbarhet för att optimera resurser. Jag arbetar med verkliga scenarier där säkerhet, prestanda och struktur står i fokus, och varje uppgift hjälper mig att tänka som en framtida utvecklare i branschen.
+        <br><br>
+        Det jag älskar mest med detta område är att det ständigt utvecklas. Azure erbjuder inte bara teknologi – det erbjuder möjligheter. Och jag är här för att ta till vara på dem. 🚀
+        <br><br>
+        Med en blandning av tekniskt kunnande, nyfikenhet och praktiskt lärande är jag väl på väg att bli en molnspecialist som inte bara bygger lösningar – jag bygger dem rätt.
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2 class="english">Skills</h2>
+      <h2 class="swedish">Färdigheter</h2>
+      <div class="skills-icons">
+        <div><i class="fab fa-microsoft"></i><span>Azure Cloud Services</span></div>
+        <div><i class="fab fa-html5"></i><span>HTML</span></div>
+        <div><i class="fab fa-css3-alt"></i><span>CSS</span></div>
+        <div><i class="fab fa-js-square"></i><span>JavaScript</span></div>
+        <div><i class="fab fa-react"></i><span>React</span></div>
+        <div><i class="fas fa-database"></i><span>SQL</span></div>
+        <div><i class="fas fa-code"></i><span>ASP.NET Core</span></div>
+        <div><i class="fas fa-plug"></i><span>Web APIs</span></div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="english">Projects</h2>
+      <h2 class="swedish">Projekt</h2>
+      <div class="projects-container">
+        <div class="project-card">
+          <h3 class="english">Blog Platform API</h3>
+          <h3 class="swedish">Bloggplattform API</h3>
+          <p class="english">Built a secure ASP.NET Core Web API with user authentication, CRUD operations, and Swagger documentation.</p>
+          <p class="swedish">Byggde en säker ASP.NET Core Web API med användarautentisering, CRUD-operationer och Swagger-dokumentation.</p>
+        </div>
+        <div class="project-card">
+          <h3 class="english">Portfolio Website</h3>
+          <h3 class="swedish">Portföljsajt</h3>
+          <p class="english">Designed and coded a responsive personal portfolio using HTML, CSS, and JavaScript to showcase skills and projects.</p>
+          <p class="swedish">Designade och kodade en responsiv personlig portfölj med HTML, CSS och JavaScript för att visa upp färdigheter och projekt.</p>
+        </div>
+        <div class="project-card">
+          <h3 class="english">Weather App</h3>
+          <h3 class="swedish">Väderapp</h3>
+          <p class="english">A simple React app that fetches real-time weather data using a public API and displays it with sleek UI.</p>
+          <p class="swedish">En enkel React-app som hämtar väderdata i realtid med en offentlig API och visar det med en snygg användargränssnitt.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <footer>
+    <p>&copy; 2025 Cristhian Rodriguez</p>
+  </footer>
+</body>
+</html>
